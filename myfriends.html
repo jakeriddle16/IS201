@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Friends</title>
+    <link href="css/fromscratch.css" rel="stylesheet" />
+</head>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const wordleGrid = document.querySelector(".wordle-grid");
+        const rows = document.querySelectorAll(".row");
+        const targetWord = "CRANE"; // Change this to your desired target word
+        let currentRow = 0;
+        let currentCell = 0;
+    
+        // Handle keypresses
+        document.addEventListener("keydown", function (event) {
+            const key = event.key.toUpperCase();
+    
+            // Handle letter input
+            if (/^[A-Z]$/.test(key) && currentCell < 5) {
+                const cell = rows[currentRow].children[currentCell];
+                cell.textContent = key;
+                currentCell++;
+            }
+    
+            // Handle backspace
+            if (key === "BACKSPACE" && currentCell > 0) {
+                currentCell--;
+                const cell = rows[currentRow].children[currentCell];
+                cell.textContent = "";
+            }
+    
+            // Handle Enter to submit the guess
+            if (key === "ENTER" && currentCell === 5) {
+                const guess = Array.from(rows[currentRow].children)
+                    .map(cell => cell.textContent)
+                    .join("");
+                checkGuess(guess);
+            }
+        });
+    
+        function checkGuess(guess) {
+            const targetLetters = targetWord.split("");
+    
+            // Check each letter in the guess
+            Array.from(rows[currentRow].children).forEach((cell, index) => {
+                if (guess[index] === targetLetters[index]) {
+                    // Correct letter and position
+                    cell.style.backgroundColor = "green";
+                    targetLetters[index] = null; // Mark as used
+                } else if (targetLetters.includes(guess[index])) {
+                    // Correct letter, wrong position
+                    cell.style.backgroundColor = "yellow";
+                    targetLetters[targetLetters.indexOf(guess[index])] = null; // Mark as used
+                } else {
+                    // Incorrect letter
+                    cell.style.backgroundColor = "gray";
+                }
+            });
+    
+            // Move to the next row or end the game
+            if (guess === targetWord) {
+                alert("Congratulations! You guessed the word!");
+            } else if (currentRow < 5) {
+                currentRow++;
+                currentCell = 0;
+            } else {
+                alert(`Game Over! The word was ${targetWord}`);
+            }
+        }
+    });
+    </script>
+    
+<body>
+    <div class="navLinks">
+        <a href="index.html" id="top">Home</a> |
+        <a href="resume.html">Resume</a> |
+        <a href="dashboard.html">Dashboard</a> |
+        <a href="myfriends.html">My Friends</a> |
+    </div>
+    <br>
+
+    <div class="header">
+        These are my friends
+    </div>
+
+    <div class="subHeader">
+        Here are some of the things we like to do:
+    </div>
+
+    <div id="topLeftBox" class="imageBox">
+        <div>Throw creative parties</div>
+        <img src="assets/img/Pinewood-derby.jpeg" height="350">
+    </div>
+
+    <div id="topRightBox" class="imageBox">
+        <div>Go skiing</div>
+        <img src="assets/img/friends-ski.jpeg" height="350">
+    </div>
+
+    <div id="middleLeftBox" class="imageBox">
+        <div>Explore rivers in our kayaks</div>
+        <img src="assets/img/kayak.jpeg" height="350">
+    </div>
+
+    <div id="middleRightBox" class="imageBox">
+        <div>Play video games together</div>
+        <img src="assets/img/video-games.jpeg" height="350">
+    </div>
+
+    <div id="bottomLeftBox" class="imageBox">
+        <div>Dress up in matching outfits</div>
+        <img src="assets/img/wizard.jpeg" height="350">
+    </div>
+
+    <div id="bottomRightBox" class="imageBox">
+        <div>Travel together</div>
+        <img src="assets/img/travel.jpeg" height="350">
+    </div>
+    <br>
+    <div id="anchor">
+        Back to the <a href="#top">top</a>
+    </div>
+
+    <!-- WORDLE Game -->
+<div class="wordle-container">
+    <h2>WORDLE Game</h2>
+    <div class="wordle-grid">
+        <!-- Create 6 rows for guesses -->
+        <div class="row">
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+        </div>
+        <div class="row">
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+        </div>
+        <div class="row">
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+        </div>
+        <div class="row">
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+        </div>
+        <div class="row">
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+        </div>
+        <div class="row">
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+        </div>
+    </div>
+</div>
+
+<div id="wordleInstructions">
+    <h2>How to play:</h2>
+    <ol>
+        <li>
+            Guess a word
+            <ul>
+                <li>
+                    Press enter to submit your guess
+                </li>
+            </ul>
+        </li>
+        <li>
+            Analyze your guess
+            <ul>
+                <li>
+                    Correct letters in the correct location will be green
+                </li>
+                <li>
+                    Correct letters in the incorrect location will be yellow
+                </li>
+                <li>
+                    For incorrect letters, the color will be gray
+                </li>
+            </ul>
+        </li>
+        <li>
+            Make another guess
+        </li>
+    </ol>
+</div>
+
+<!-- YouTube Video -->
+<div class="youtubeDiv">
+    <h2>Check out this video!</h2>
+    <iframe class="youtubeVideo" src="https://www.youtube.com/embed/G7RgN9ijwE4?si=2FXVFivatoj31VBl" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+
+<style>
+/* WORDLE Container Styling */
+.wordle-container {
+    position: absolute;
+    top: 1400px;
+    left: 575px;
+    /* margin: 50px auto; */
+    text-align: center;
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
+.wordle-container h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* WORDLE Grid Styling */
+.wordle-grid {
+    display: grid;
+    grid-template-rows: repeat(6, 1fr);
+    grid-gap: 10px;
+    justify-content: center;
+}
+
+.row {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 5px;
+}
+
+.cell {
+    width: 50px;
+    height: 50px;
+    border: 2px solid #ddd;
+    text-align: center;
+    line-height: 50px;
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    background-color: #fff;
+    color: #333;
+}
+
+/* Hover Effect */
+.cell:hover {
+    border-color: #aaa;
+    cursor: pointer;
+}
+</style>
+
+</body>
+</html>

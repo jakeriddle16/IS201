@@ -1,0 +1,30 @@
+#resumeItems {
+    text-align: center;
+    width: 100%;
+}
+
+main {
+    padding-bottom: 250px;
+}
+
+#homeContainer{
+    padding-bottom: 200px;
+}
+
+.resumeTitles {
+    font-weight: bolder;
+    font-size: large;
+}
+
+.resumeBody{
+    font-size: medium;
+}
+.resumeTitleRow{
+    display: flex;
+    justify-content: space-between;
+}
+
+.resumeDates {
+    font-size: medium;
+    font-weight: bold;
+}

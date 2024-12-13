@@ -1,0 +1,109 @@
+body {
+    position: relative;
+    padding-bottom: 100px;
+    background-color: hwb(117 86% 6%);
+}
+
+.navLinks {
+    text-align: right;
+    color: blue;
+}
+
+.header {
+    font-size: 24px;
+    text-align: center;
+    font-weight: bold;
+    position: relative;
+    z-index: 1;
+}
+
+.subHeader{
+    font-size: 24px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.imageBox {
+    border: solid 1px #555555;
+    width: 45%;
+    height: 400px;
+    position: absolute;
+    text-align: center;
+    font-size: large;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#topLeftBox {
+    top: 100px;
+    left: 5%;
+}
+
+#topRightBox {
+    top: 100px;
+    left: 52%;
+}
+
+#middleLeftBox {
+    top: 530px;
+    left: 5%;
+}
+
+#middleRightBox {
+    top: 530px;
+    left: 52%;
+}
+
+#bottomLeftBox {
+    top: 960px;
+    left: 5%;
+}
+
+#bottomRightBox {
+    top: 960px;
+    left: 52%;
+}
+
+#wordleInstructions {
+    position: absolute;
+    top: 1450px; /* Ensure 'top' is not affecting the position */
+    bottom: 50px; /* Distance from the bottom of the page */
+    left: 50px; /* Distance from the left of the page */
+    width: 400px; /* Set a fixed width for the instructions */
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    line-height: 1.5;
+    color: #333;
+    text-align: left;
+    z-index: 2; /* Ensure it appears above other elements */
+}
+
+.youtubeDiv {
+    position: absolute;
+    top: 1400px;
+    left: 900px;
+    text-align: center;
+    margin: 20px auto;
+}
+
+.youtubeVideo {
+    aspect-ratio: 9/6;
+    width: 500px;
+}
+
+iframe {
+    top: 1450px;
+    max-width: 100%;
+    height: auto;
+    border: none;
+}
+
+
+#anchor {
+    text-align: center;
+    padding-bottom: 150px;
+    position: absolute;
+    top: 1900px;
+    width: 100%;
+    color: darkgreen;
+}
